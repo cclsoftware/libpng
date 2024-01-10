@@ -773,6 +773,10 @@ png_longjmp,(png_const_structrp png_ptr, int val),PNG_NORETURN)
     * PNG_ABORT().
     */
    PNG_ABORT();
+
+#ifdef CTL_RTOS
+   __builtin_unreachable();
+#endif
 }
 
 #ifdef PNG_WARNINGS_SUPPORTED
@@ -914,6 +918,10 @@ png_safe_error),(png_structp png_nonconst_ptr, png_const_charp error_message),
 
    /* Here on an internal programming error. */
    abort();
+
+#ifdef CTL_RTOS
+   __builtin_unreachable();
+#endif
 }
 
 #ifdef PNG_WARNINGS_SUPPORTED
